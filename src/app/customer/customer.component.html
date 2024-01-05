@@ -1,0 +1,50 @@
+<div class="flex-container">
+<div>
+<table>
+    <thead>
+        <th>
+            First Name
+        </th>
+        <th>
+            Middle Name
+        </th>
+        <th>
+            Last Name
+        </th>
+        <th>
+            Phone Number
+        </th>
+        <th>
+            Email Address
+        </th>
+        <th>
+            Edit
+        </th>
+        <th>
+            Delete
+        </th>
+    </thead>
+    <ng-container *ngFor="let customer of customerList">
+        <tr>
+            <td>{{customer.firstName}}</td>
+            <td>{{customer.middleName}}</td>
+            <td>{{customer.lastName}}</td>
+            <td>{{customer.phoneNumber}}</td>
+            <td>{{customer.emailAddress}}</td>
+            <td>
+                <a href="#" (click)="editCustomer(customer.id)">Edit</a>
+            </td>
+            <td>
+                <a href="#" (click)="delete(customer.id)">Delete</a>
+            </td>
+        </tr>
+    </ng-container>
+</table>
+</div>
+<div style="margin-top: 20px;">
+    <button (click) = "showAdd = true"> Add customer </button>
+</div>
+<ng-container *ngIf="showAdd">
+    <app-customer-detail [id]="selectedCustomer" (hideDetail)="hideDetail($event)"></app-customer-detail>
+</ng-container>
+</div>

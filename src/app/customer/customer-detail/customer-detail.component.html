@@ -1,0 +1,50 @@
+<form>
+<div class="flex-container">
+    <div>
+        First Name<span class="mandate">*</span>
+    </div>
+    <div>
+        <input type="text" [(ngModel)]="customer.firstName" required>
+    </div>
+</div>
+<div class="flex-container">
+    <div>
+        Middle Name
+    </div>
+    <div>
+        <input type="text" [(ngModel)]="customer.middleName">
+    </div>
+</div>
+<div class="flex-container">
+    <div>
+        Last Name<span class="mandate">*</span>
+    </div>
+    <div>
+        <input type="text" [(ngModel)]="customer.lastName" required>
+    </div>
+</div>
+<div class="flex-container">
+    <div>
+        Phone Number<span class="mandate">*</span>
+    </div>
+    <div>
+        <input type="text" [(ngModel)]="customer.phoneNumber" required>
+    </div>
+</div>
+<div class="flex-container">
+    <div>
+        Email Address<span class="mandate">*</span>
+    </div>
+    <div>
+        <input type="text" [(ngModel)]="customer.emailAddress" required> 
+    </div>
+</div>
+<div class="flex-container">
+    <div>
+        <button type="submit" (click)="saveCustomer()">Save</button>
+    </div>
+    <div>
+        <button (click)="hideDetails()">Cancel</button>
+    </div>
+</div>
+</form>
