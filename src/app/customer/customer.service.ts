@@ -25,6 +25,6 @@ export class CustomerService {
   }
   deleteCustomer(id : number)
   {
-    return this.http.post<boolean>(`${environment.apiEndpoint}/Customer/deleteCustomer`,{id : id});
+    return this.http.get<boolean>(`${environment.apiEndpoint}/Customer/deleteCustomer/${id}`);
   }
 }

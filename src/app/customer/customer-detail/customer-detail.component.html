@@ -1,50 +1,49 @@
-<form>
-<div class="flex-container">
-    <div>
-        First Name<span class="mandate">*</span>
+<form (ngSubmit)="customerForm.form.valid && onSubmit()" class="form" #customerForm="ngForm">
+    <div class=" form-group">
+        <label>First Name</label>
+        <input type="text" class="form-control" [(ngModel)]="customer.firstName" name="firstname" #fname="ngModel"
+            required>
+        <span class="text-danger" *ngIf="(fname.touched || customerForm.submitted) && fname.errors?.['required']">
+           First Name is required
+        </span>
     </div>
-    <div>
-        <input type="text" [(ngModel)]="customer.firstName" required>
+    <div class=" form-group">
+        <label>Middle Name</label>
+        <input type="text" class="form-control" [(ngModel)]="customer.middleName" name="middlename">
     </div>
-</div>
-<div class="flex-container">
-    <div>
-        Middle Name
+    <div class=" form-group">
+        <label>Last Name</label>
+        <input type="text" class="form-control" [(ngModel)]="customer.lastName" name="lastname" #lname="ngModel"
+            required>
+        <span class="text-danger" *ngIf="(lname.touched || customerForm.submitted) && lname.errors?.['required']">
+            Last Name is required
+        </span>
     </div>
-    <div>
-        <input type="text" [(ngModel)]="customer.middleName">
+    <div class=" form-group">
+        <label>Phone Number</label>
+        <input type="text" maxlength="10" class="form-control" [(ngModel)]="customer.phoneNumber" name="phoneNumber" #phoneNumber="ngModel"
+            required>
+        <span class="text-danger" *ngIf="(phoneNumber.touched || customerForm.submitted) && phoneNumber.errors?.['required']">
+            Please enter a valid phone Number
+        </span>
     </div>
-</div>
-<div class="flex-container">
-    <div>
-        Last Name<span class="mandate">*</span>
+    <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" class="form-control" [email]="true" [(ngModel)]="customer.emailAddress" name="emailAddress" #emailAddress="ngModel"
+            required>
+        <span class="text-danger" *ngIf="(emailAddress.touched || customerForm.submitted) && emailAddress.errors?.['required']">
+            Email is required
+        </span>
+        <span class="text-danger" *ngIf="(emailAddress.touched || customerForm.submitted) && emailAddress.errors?.['email']">
+            Please enter a valid email
+        </span>
     </div>
-    <div>
-        <input type="text" [(ngModel)]="customer.lastName" required>
+    <div class="flex-container">
+        <div>
+            <button type="submit">Save</button>
+        </div>
+        <div>
+            <button (click)="hideDetails()">Cancel</button>
+        </div>
     </div>
-</div>
-<div class="flex-container">
-    <div>
-        Phone Number<span class="mandate">*</span>
-    </div>
-    <div>
-        <input type="text" [(ngModel)]="customer.phoneNumber" required>
-    </div>
-</div>
-<div class="flex-container">
-    <div>
-        Email Address<span class="mandate">*</span>
-    </div>
-    <div>
-        <input type="text" [(ngModel)]="customer.emailAddress" required> 
-    </div>
-</div>
-<div class="flex-container">
-    <div>
-        <button type="submit" (click)="saveCustomer()">Save</button>
-    </div>
-    <div>
-        <button (click)="hideDetails()">Cancel</button>
-    </div>
-</div>
 </form>

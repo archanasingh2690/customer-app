@@ -25,7 +25,7 @@
         </th>
     </thead>
     <ng-container *ngFor="let customer of customerList">
-        <tr>
+        <tr [ngClass]="lastCust == customer.id ? 'highlight' : ''">
             <td>{{customer.firstName}}</td>
             <td>{{customer.middleName}}</td>
             <td>{{customer.lastName}}</td>

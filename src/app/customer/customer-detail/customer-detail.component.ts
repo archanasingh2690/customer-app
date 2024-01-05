@@ -8,15 +8,14 @@ import { CustomerService } from '../customer.service';
   templateUrl: './customer-detail.component.html',
   styleUrls: ['./customer-detail.component.scss']
 })
-export class CustomerDetailComponent implements OnInit,OnChanges {
+export class CustomerDetailComponent implements OnInit, OnChanges {
 
-  @Input() id : number = 0;
-  @Output() hideDetail = new EventEmitter();
-  customer : CustomerModel = {id : 0, firstName :'',lastName:''};
-  constructor(private custService : CustomerService) { }
+  @Input() id: number = 0;
+  @Output() hideDetail = new EventEmitter<CustomerModel>();
+  customer: CustomerModel = { id: 0, firstName: '', lastName: '' };
+  constructor(private custService: CustomerService) { }
   ngOnChanges(changes: SimpleChanges): void {
-    if(changes['id'].previousValue != changes['id'].currentValue)
-    {
+    if (changes['id'].previousValue != changes['id'].currentValue) {
       this.custService.getCustomerById(changes['id'].currentValue).subscribe((x) => {
         this.customer = x;
       });
@@ -25,14 +24,16 @@ export class CustomerDetailComponent implements OnInit,OnChanges {
 
   ngOnInit(): void {
   }
-  hideDetails()
-  {
-    this.hideDetail.emit(false);
+  hideDetails() {
+    this.customer = { id: 0, firstName: '', lastName: '' };
+    this.hideDetail.emit(this.customer);
   }
-  saveCustomer()
-  {
+  onSubmit() {
     this.custService.addUpdateCustomer(this.customer).subscribe((d) => {
-      console.log(d);
+      if (d) alert('customer saved successfully!!');
+      else alert('An error occured in saving details!');
+      this.customer = { id: 0, firstName: '', lastName: '' };
+      this.hideDetail.emit(this.customer);
     });
   }
 }
