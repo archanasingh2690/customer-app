@@ -29,4 +29,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ##Screen Shots
 ![Alt text](./src/assets/custGrid.png "Customer Screen")
 ![Alt text](./src/assets/CustEdit.png "Customer Edit")
-![Alt text](./src/assets/Validation.png.png "Customer validation Edit")
+![Alt text](./src/assets/Validation.png "Customer validation Edit")
