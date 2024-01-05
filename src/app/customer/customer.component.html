@@ -18,6 +18,12 @@
             Email Address
         </th>
         <th>
+            Created Date
+        </th>
+        <th>
+            Updated Date
+        </th>
+        <th>
             Edit
         </th>
         <th>
@@ -31,6 +37,8 @@
             <td>{{customer.lastName}}</td>
             <td>{{customer.phoneNumber}}</td>
             <td>{{customer.emailAddress}}</td>
+            <td>{{customer.createdDate | date : 'short'}}</td>
+            <td>{{customer.updatedDate | date : 'short'}}</td>
             <td>
                 <a href="#" (click)="editCustomer(customer.id)">Edit</a>
             </td>

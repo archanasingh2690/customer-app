@@ -6,4 +6,6 @@ export interface CustomerModel
     middleName? : string;
     phoneNumber? : string;
     emailAddress? : string;
+    createdDate? : Date;
+    updatedDate? : Date;
 }
